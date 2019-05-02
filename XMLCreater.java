@@ -5,6 +5,7 @@
  */
 package com;
 
+import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -45,6 +46,8 @@ public class XMLCreater {
         
         Element name1 = doc.createElement("NAME");
         name1.appendChild(doc.createTextNode("BANANA"));
+        
+        product1.appendChild(name1);
 
 //      Product 2
         Element product2 = doc.createElement("PRODUCT");
@@ -55,6 +58,7 @@ public class XMLCreater {
         Element name2 = doc.createElement("NAME");
         name2.appendChild(doc.createTextNode("APPLE"));
         
+        product2.appendChild(name2);
         
         products.appendChild(product1);
         products.appendChild(product2);
@@ -64,7 +68,7 @@ public class XMLCreater {
         
         DOMSource inputDoc = new DOMSource(doc);
         
-        StreamResult outputFile = new StreamResult("productions.xml");
+        StreamResult outputFile = new StreamResult(new File("productions.xml"));
         
 //        t.setOutputProperties(OutputKeys.INDENT, "yes");
         t.transform(inputDoc, outputFile);
